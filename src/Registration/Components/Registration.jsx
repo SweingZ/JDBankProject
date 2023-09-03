@@ -88,17 +88,14 @@ function Registration() {
       axios
         .post("http://localhost:8080/home/register", registerData)
         .then((response) => {
-          localStorage.setItem(
-            "UserToken",
-            JSON.stringify(response.data.accessToken)
-          );
+          console.log(response.data)
           localStorage.setItem(
             "UserData",
-            JSON.stringify(response.data.person)
+            JSON.stringify(response.data)
           );
         })
         .then(() => {
-          navTo("/User");
+          navTo("/Login");
         })
         .catch((error) => {
           console.error(error);

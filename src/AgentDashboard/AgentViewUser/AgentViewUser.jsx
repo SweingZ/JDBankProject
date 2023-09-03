@@ -40,7 +40,7 @@ function AgentViewUser() {
     e.preventDefault();
     try {
       const agent =  JSON.parse(localStorage.getItem("UserData"));
-      const apiURL = "http://localhost:8080/agent/user/" + agent.agent_id + "/" +  userId;
+      const apiURL = "http://localhost:8080/agent/user/" + agent?.agent_id + "/" +  userId;
       const response = await axios.post(
         apiURL
       );
@@ -48,9 +48,8 @@ function AgentViewUser() {
       console.log("User added successfully:", response.data);
 
       closeForm();
-      const agent1 =  JSON.parse(localStorage.getItem("UserData"));
       const userResponse = await axios.get(
-        "http://localhost:8080/agent/" + agent1.agent_id+
+        "http://localhost:8080/agent/" + agent?.agent_id+
           "/user"
       );
 
