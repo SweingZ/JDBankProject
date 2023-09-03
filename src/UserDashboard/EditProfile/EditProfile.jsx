@@ -26,10 +26,9 @@ function EditProfile() {
         ([key, value]) => value !== null && value !== ""
       )
     );
-
+    const user =  JSON.parse(localStorage.getItem("UserData"));
     const apiUrl =
-      "http://localhost:8080/user/" +
-      JSON.parse(localStorage.getItem("UserData").user_id); // Replace with your API endpoint
+      "http://localhost:8080/user/" + user.user_id; // Replace with your API endpoint
 
     axios
       .put(apiUrl, filteredData)
@@ -52,10 +51,10 @@ function EditProfile() {
       const formData = new FormData();
       formData.append("avatar", file);
 
+      const user =  JSON.parse(localStorage.getItem("UserData"));
       // Send the image to the server using Axios
       const apiUrl =
-        "http://localhost:8080/user/upload/" +
-        JSON.parse(localStorage.getItem("UserData").user_id); // Replace with your API endpoint for image upload
+        "http://localhost:8080/user/upload/" + user.user_id; // Replace with your API endpoint for image upload
 
       axios
         .post(apiUrl, formData, {

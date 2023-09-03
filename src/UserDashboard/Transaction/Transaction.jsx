@@ -21,10 +21,9 @@ function Transaction() {
         amount: parseFloat(amount),
         remarks,
       };
-
+      const user =  JSON.parse(localStorage.getItem("UserData"));
       const response = await axios.post(
-        "http://localhost:8080/user/" +
-          JSON.parse(localStorage.getItem("UserData").user_id) +
+        "http://localhost:8080/user/" + user.user_id +
           "/transaction",
         transaction
       );
@@ -44,9 +43,9 @@ function Transaction() {
 
   const fetchTransactionHistory = async () => {
     try {
+      const user =  JSON.parse(localStorage.getItem("UserData"));
       const response = await axios.get(
-        "http://localhost:8080/user/" +
-          JSON.parse(localStorage.getItem("UserData").user_id) +
+        "http://localhost:8080/user/" + user.user_id +
           "/transactionList"
       );
 
