@@ -16,6 +16,7 @@ function AgentViewUser() {
             JSON.parse(localStorage.getItem("UserData").person.agent_id) +
             "/user"
         );
+        //Changes
 
         console.log("User data fetched successfully:", response.data);
         setUserData(response.data);
